@@ -2,19 +2,19 @@ import { createContext } from 'react';
 import React, { useState } from 'react';
 
 const ThemeContext = createContext();
-const initialTheme = 'light';
+const initialTheme = localStorage.getItem('theme');
 
 const ThemeProvider = ({ children }) => {
 
     const [theme, setTheme] = useState(initialTheme);
 
-    const handleTheme = (e) => {
-        if (e.target.value === 'light') {
-            setTheme(localStorage.getItem('theme'));
+    const handleTheme = (status) => {
+        if (status) {
             localStorage.setItem('theme', 'light');
-        } else {
             setTheme(localStorage.getItem('theme'));
+        } else {
             localStorage.setItem('theme', 'dark');
+            setTheme(localStorage.getItem('theme'));
         }
     };
 
