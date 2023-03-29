@@ -9,12 +9,14 @@ const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState(initialTheme);
 
     const handleTheme = (status) => {
+        
+
         if (status) {
+            setTheme('light');
             localStorage.setItem('theme', 'light');
-            setTheme(localStorage.getItem('theme'));
         } else {
+            setTheme('dark');
             localStorage.setItem('theme', 'dark');
-            setTheme(localStorage.getItem('theme'));
         }
     };
 
